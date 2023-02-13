@@ -33,9 +33,13 @@ public class MainClass {
             double n1 = new Double(numero1);
 
             do {
-                System.out.println("\n **** Elige las operaciones que quieres realizar: ****");
-                System.out.println("\n + -> Suma  \n - = Resta  \n"
-                        + " x -> Multiplicación  \n / -> Dividir  \n * -> **Elevar primer numero al segon numero**  "
+                System.out.println("\n **** Elige las operaciones "
+                        + "que quieres realizar: ****");
+                System.out.println("\n + -> Suma  \n "
+                        + "- = Resta  \n"
+                        + " x -> Multiplicación  \n "
+                        + "/ -> Dividir  \n "
+                        + "* -> **Elevar primer numero al segon numero**  "
                         + "\n % -> Residu ");
                 operacion = sc.nextLine();
                 if (operacion.equals("+") || operacion.equals("-")
