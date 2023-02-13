@@ -33,11 +33,10 @@ public class MainClass {
             double n1 = new Double(numero1);
 
             do {
-                System.out.println("\n Operació? (Indica el signe)");
-                System.out.println("+ = sumar \n - = restar \n"
-                        + " x = multiplicar \n / = dividir \n * = "
-                        + "elevar primer num al segon num."
-                        + "\n % = residu");
+                System.out.println("\n **** Elige las operaciones que quieres realizar: ****");
+                System.out.println("\n + -> Suma  \n - = Resta  \n"
+                        + " x -> Multiplicación  \n / -> Dividir  \n * -> **Elevar primer numero al segon numero**  "
+                        + "\n % -> Residu ");
                 operacion = sc.nextLine();
                 if (operacion.equals("+") || operacion.equals("-")
                         || operacion.equals("x")
