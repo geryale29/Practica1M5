@@ -18,67 +18,76 @@ public class MainClass {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double res = 0, n1 = 0, n2 = 0;
-        String operacion, numero1, numero2;
+        double res = 0;
+        String operacion;
         boolean comprobar = false;
 
         do {
-            System.out.println("\n Introdueix el primer numero. ");
-            numero1 = sc.nextLine();
 
-            System.out.println("\nIndica el signo de la "
-                    + "operacion que deseas realizar");
-            System.out.println("+ = sumar \n "
-                    + "- = restar \n"
-                    + " x = multiplicar \n "
-                    + "/ = dividir \n "
-                    + "* = elevar primer num al segon num."
-                    + "\n % = residu");
-            operacion = sc.nextLine();
+            String numero1;
+            do {
+                System.out.println("\n Introdueix el primer numero. ");
+                numero1 = sc.nextLine();
+            } while (!numero1.matches("[+-]?[\\d]*[.]?[\\d]+"));
+            double nume1 = Double.parseDouble(numero1);
+            double n1 = new Double(numero1);
 
-            System.out.println("\n Introdueix el segon numero.");
-            numero2 = sc.nextLine();
+            do {
+                System.out.println("\n Operació? (Indica el signe)");
+                System.out.println("+ = sumar \n - = restar \n"
+                        + " x = multiplicar \n / = dividir \n * = "
+                        + "elevar primer num al segon num."
+                        + "\n % = residu");
+                operacion = sc.nextLine();
+                if (operacion.equals("+") || operacion.equals("-")
+                        || operacion.equals("x")
+                        || operacion.equals("X") || operacion.equals("/")
+                        || operacion.equals("%")
+                        || operacion.equals("*")) {
+                    comprobar = true;
+                } else {
+                    comprobar = false;
+                }
+            } while (comprobar != true);
 
-            switch (operacion) {
+            String numero2;
+            do {
+                System.out.println("\n Introdueix el segon numero.");
+                numero2 = sc.nextLine();
+            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
+            double nume2 = Double.parseDouble(numero2);
+            double n2 = new Double(numero2);
 
-                case "+":
-                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
-                        calculadora.suma(n1, n2);
-                    }
-                    break;
-
-                case "-":
-                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+            do {
+                comprobar = true;
+                switch (operacion) {
+                    case "+":
+                        res = calculadora.suma(n1, n2);
+                        break;
+                    case "-":
                         res = calculadora.resta(n1, n2);
-                    }
-                    break;
-                case "x":
-                case "X":
-                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        break;
+                    case "x":
+                    case "X":
                         res = calculadora.multiplicacion(n1, n2);
-                    }
-                    break;
-
-                case "/":
-                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        break;
+                    case "/":
+                        n2 = verificacionDades.gestor(n2);
                         res = calculadora.division(n1, n2);
-                    }
-                    break;
-
-                case "*":
-                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
-                        res = Math.pow(n1, n1);
-                    }
-                    break;
-
-                case "%":
-                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        break;
+                    case "*":
+                        res = Math.pow(n1, n2);
+                        break;
+                    case "%":
+                        n2 = verificacionDades.gestor(n2);
                         res = calculadora.modulo(n1, n2);
-                    }
-                    break;
-            }
+                        break;
+                }
+            } while (comprobar != true);
 
-            System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
+            System.out.println("(" + numero1 + ") " + operacion + " "
+                    + "(" + n2 + ")"
+                    + "" + " = " + res);
             System.out.println("\n Vols continuar operant? \n");
             System.out.println(" [s/n]");
             do {
@@ -88,17 +97,15 @@ public class MainClass {
                 switch (operacion) {
                     case "s":
                     case "S":
-                        break;
                     case "n":
                     case "N":
                         break;
                     default:
-                        System.err.println("\n Error, posa un valor vàlid. \n");
+                        System.err.println("\n Error, posa un valor "
+                                + "vàlid. \n");
                         comprobar = false;
                 }
             } while (comprobar != true);
-
         } while (operacion.equals("s") || operacion.equals("S"));
     }
-
 }

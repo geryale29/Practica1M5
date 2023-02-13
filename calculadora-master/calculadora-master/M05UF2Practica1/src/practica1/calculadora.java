@@ -10,7 +10,7 @@ package practica1;
  */
 public class calculadora {
 
-  static double suma(double n1, double n2) {
+    static double suma(double n1, double n2) {
 
         double res;
         res = n1 + n2;
@@ -31,13 +31,15 @@ public class calculadora {
 
     static double division(double n1, double n2) {
         double res;
-        res = n1 * n2;
+
+        res = n1 / n2;
 
         return res;
     }
 
     static double modulo(double n1, double n2) {
-       double res;
+        double res;
+        verificacionDades.gestor(n2);
         res = n1 % n2;
         return res;
     }
