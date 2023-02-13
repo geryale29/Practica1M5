@@ -22,79 +22,83 @@ public class MainClass {
         String operacion, numero1, numero2;
         boolean comprobar = false;
 
-        System.out.println("\n Introdueix el primer numero. ");
-        numero1 = sc.nextLine();
-
-        System.out.println("\nIndica el signo de la "
-                + "operacion que deseas realizar");
-        System.out.println("+ = sumar \n "
-                + "- = restar \n"
-                + " x = multiplicar \n "
-                + "/ = dividir \n "
-                + "* = elevar primer num al segon num."
-                + "\n % = residu");
-        operacion = sc.nextLine();
-
-        System.out.println("\n Introdueix el segon numero.");
-        numero2 = sc.nextLine();
-
-        switch (operacion) {
-
-            case "+":
-                if (verificacionDades.gestor(numero1, numero2, operacion)) {
-                    calculadora.suma(n1, n2);
-                }
-                break;
-
-            case "-":
-                if (verificacionDades.gestor(numero1, numero2, operacion)) {
-                   res = calculadora.resta(n1, n2);
-                }
-                break;
-            case "x":
-            case "X":
-                if (verificacionDades.gestor(numero1, numero2, operacion)) {
-                  res =  calculadora.multiplicacion(n1, n2);
-                }
-                break;
-
-            case "/":
-                if (verificacionDades.gestor(numero1, numero2, operacion)) {
-                  res =  calculadora.division(n1, n2);
-                }
-                break;
-
-            case "*":
-                if (verificacionDades.gestor(numero1, numero2, operacion)) {
-                    res = Math.pow(n1, n1);
-                }
-                break;
-
-            case "%":
-                if (verificacionDades.gestor(numero1, numero2, operacion)) {
-                   res = calculadora.modulo(n1, n2);
-                }
-                break;
-        }
-
-        System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
-        System.out.println("\n Vols continuar operant? \n");
-        System.out.println(" [s/n]");
         do {
-            comprobar = true;
+            System.out.println("\n Introdueix el primer numero. ");
+            numero1 = sc.nextLine();
+
+            System.out.println("\nIndica el signo de la "
+                    + "operacion que deseas realizar");
+            System.out.println("+ = sumar \n "
+                    + "- = restar \n"
+                    + " x = multiplicar \n "
+                    + "/ = dividir \n "
+                    + "* = elevar primer num al segon num."
+                    + "\n % = residu");
             operacion = sc.nextLine();
 
+            System.out.println("\n Introdueix el segon numero.");
+            numero2 = sc.nextLine();
+
             switch (operacion) {
-                case "s":
-                case "S":
-                case "n":
-                case "N":
+
+                case "+":
+                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        calculadora.suma(n1, n2);
+                    }
                     break;
-                default:
-                    System.err.println("\n Error, posa un valor vàlid. \n");
-                    comprobar = false;
+
+                case "-":
+                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        res = calculadora.resta(n1, n2);
+                    }
+                    break;
+                case "x":
+                case "X":
+                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        res = calculadora.multiplicacion(n1, n2);
+                    }
+                    break;
+
+                case "/":
+                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        res = calculadora.division(n1, n2);
+                    }
+                    break;
+
+                case "*":
+                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        res = Math.pow(n1, n1);
+                    }
+                    break;
+
+                case "%":
+                    if (verificacionDades.gestor(numero1, numero2, operacion)) {
+                        res = calculadora.modulo(n1, n2);
+                    }
+                    break;
             }
-        } while (!comprobar && operacion.equals("s") || operacion.equals("S"));
+
+            System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
+            System.out.println("\n Vols continuar operant? \n");
+            System.out.println(" [s/n]");
+            do {
+                comprobar = true;
+                operacion = sc.nextLine();
+
+                switch (operacion) {
+                    case "s":
+                    case "S":
+                        break;
+                    case "n":
+                    case "N":
+                        break;
+                    default:
+                        System.err.println("\n Error, posa un valor vàlid. \n");
+                        comprobar = false;
+                }
+            } while (comprobar != true);
+
+        } while (operacion.equals("s") || operacion.equals("S"));
     }
 
 }

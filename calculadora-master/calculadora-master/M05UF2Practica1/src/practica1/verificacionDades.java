@@ -12,11 +12,10 @@ import java.util.Scanner;
  */
 public class verificacionDades {
 
-    static boolean gestor(String numero1, String numero2, String opreacion) {
+    static boolean gestor(String numero1, String numero2, String operacion) {
         Scanner sc = new Scanner(System.in);
         double res = 0;
         boolean comprobar = false;
-        String operacion = "";
 
         do {
             if (!numero1.matches("[+-]?[\\d]*[.]?[\\d]+"));
@@ -40,6 +39,7 @@ public class verificacionDades {
                     if (!comprobar) {
 
                         while (n2 == 0) {
+                            
                             do {
                                 System.err.println(" Al denominador hi ha un zero \n"
                                         + "per a  evitar errors coloca un altre valor.");
@@ -48,17 +48,11 @@ public class verificacionDades {
                             nume2 = Double.parseDouble(numero2);
                             n2 = new Double(numero2);
                         }
-                        while (n2 == 0) {
-                            do {
-                                System.err.println(" Al denominador hi ha un zero \n"
-                                        + "per a  evitar errors coloca un altre valor.");
-                                numero2 = sc.nextLine();
-                            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
-                            nume2 = Double.parseDouble(numero2);
-                            n2 = new Double(numero2);
-                        }
+                        
                     }
                     comprobar = true;
+                    break;
+                    
                 }
             }
         } while (comprobar);
